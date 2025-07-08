@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PassWiz</title>
+  <link rel="icon" type="image/png" href="padlock.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'League Spartan', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-color: rgb(29, 29, 152);
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 1000;
+    }
+
+    .left {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      flex-direction: row;
+    }
+
+    .left img {
+      height: 55px;
+      width: auto;
+    }
+
+    .branding {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .title {
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .tagline {
+      color: #ddd;
+      font-size: 0.99rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+      width: 0;
+      animation: typing 4s steps(60, end) forwards, blink 0.75s step-end infinite;
+      margin-top: 4px;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .container {
+      padding-top: 150px;
+      max-width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="left">
+      <img src="padlock.png" alt="logo" />
+      <div class="branding">
+        <span class="title">PassWiz</span>
+        <span class="tagline">Let PassWiz generate your strong passwords, so you don’t have to.</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Generate Your Password</h1>
+
+    <div class="display-container">
+      <input readonly placeholder="Password" class="display" data-passwordDisplay />
+      <button class="copyBtn" data-copy>
+        <span class="tooltip" data-copyMsg></span>
+        <img src="copy.svg" alt="copy" width="23" height="23" />
+      </button>
+    </div>
+
+    <div class="input-container">
+      <div class="length-container">
+        <p>Password Length</p>
+        <p data-lengthNumber>0</p>
+      </div>
+
+      <input type="range" min="1" max="20" class="slider" step="1" data-lengthSlider />
+
+      <div class="check">
+        <input type="checkbox" id="uppercase" />
+        <label for="uppercase">Includes Uppercase letters</label>
+      </div>
+
+      <div class="check">
+        <input type="checkbox" id="lowercase" />
+        <label for="lowercase">Includes Lowercase letters</label>
+      </div>
+
+      <div class="check">
+        <input type="checkbox" id="numbers" />
+        <label for="numbers">Includes Numbers </label>
+      </div>
+
+      <div class="check">
+        <input type="checkbox" id="symbols" />
+        <label for="symbols">Includes Symbols </label>
+      </div>
+
+      <div class="strength-container">
+        <p>Strength</p>
+        <div class="indicator" data-indicator></div>
+      </div>
+
+      <button class="generateButton">Generate Password</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
